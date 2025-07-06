@@ -1,6 +1,32 @@
 # gcp-ai-summarizer
 
+# Smart Ticket Summarizer 🚀
 
+A serverless Node.js application that summarizes incoming support tickets using **Google Cloud Vertex AI (Gemini)** and stores the results in **BigQuery** for analysis.
+
+---
+
+## 📌 **Features**
+
+- 🧠 **AI-powered summarization**: Uses the `gemini-2.0-flash-lite-001` model to generate concise, useful summaries of free-form text.
+- 🔗 **Serverless & containerized**: Runs on **Cloud Run**, auto-scales with demand.
+- 📊 **Data analytics ready**: Stores original tickets + summaries in BigQuery so you can run queries and dashboards.
+- ⚙️ **CI/CD with Cloud Build**: Build, push, and deploy automatically using `cloudbuild.yaml`.
+
+---
+
+## 🚀 **How it works**
+
+1. **POST** a ticket to `/summarize`:
+   ```bash
+   curl -X POST YOUR_CLOUD_RUN_URL/summarize \
+     -H "Content-Type: application/json" \
+     -d '{
+       "ticket_id": "1234",
+       "text": "My login keeps failing with error XYZ. I tried resetting my password but it didn’t help."
+     }'
+
+# Development
 ## Create BigQuery Table
 
 ```sql
